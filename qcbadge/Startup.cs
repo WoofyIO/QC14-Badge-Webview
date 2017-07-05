@@ -12,6 +12,12 @@ namespace qcbadge
 {
     public class Startup
     {
+        protected internal static string dbuser;
+        protected internal static string dbpass;
+        protected internal static string dburi;
+        protected internal static string dbname;
+        protected internal static string scode;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -19,6 +25,12 @@ namespace qcbadge
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
             Configuration = builder.Build();
         }
 
@@ -34,6 +46,15 @@ namespace qcbadge
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+
+
+            dbuser = Configuration.GetSection("db")["dbuser"];
+            dbpass = Configuration.GetSection("db")["dbpass"];
+            dburi = Configuration.GetSection("db")["dburi"];
+            dbname = Configuration.GetSection("db")["dbname"];
+            scode = Configuration.GetSection("s")["code"];
+
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

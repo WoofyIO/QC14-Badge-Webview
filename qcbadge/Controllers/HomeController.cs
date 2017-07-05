@@ -8,24 +8,20 @@ namespace qcbadge.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string s)
         {
-            return View();
+
+
+            if ((String.Compare(Startup.scode, s, true) == 0))
+            {
+                ViewData["Message"] = "Code Good";
+                return View();
+            }
+            else { return StatusCode(401); }
+
+
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Error()
         {
