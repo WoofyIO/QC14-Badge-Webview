@@ -1,4 +1,4 @@
-﻿div.mainold {
+﻿mainold {
     background-color: lightgrey;
     width: 600px;
     border: 5px solid black;
@@ -7,7 +7,7 @@
     text-align: left;
 }
 
-div.disclaim {
+disclaim {
     background-color: lightgrey;
     width: 600px;
     border: 5px solid black;
@@ -15,8 +15,31 @@ div.disclaim {
     margin: 0 auto;
     text-align: left;
 }
+
 
 body {
+    font-size: 36pt;
     background-color: Gainsboro;
     align-content: center;
+}
+
+.square {
+    float: left;
+    position: relative;
+    width: 4.545%;
+    padding-bottom: 4.545%; /* = width for a 1:1 aspect ratio */
+    margin: 0%;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.content {
+    position: absolute;
+    height: 100%; /* = 100% - 2*10% padding */
+    width: 100%; /* = 100% - 2*5% padding */
+    padding: 0% 0%;
+}
+
+img {
+    width: 100%;
 }

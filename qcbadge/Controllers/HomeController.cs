@@ -10,11 +10,9 @@ namespace qcbadge.Controllers
     {
         public IActionResult Index(string s)
         {
-
-
             if ((String.Compare(Startup.scode, s, true) == 0))
             {
-                ViewData["Message"] = "Code Good";
+                ViewData["Message"] = "";
                 return View();
             }
             else { return StatusCode(401); }

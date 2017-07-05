@@ -8,6 +8,16 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
     <UserSecretsId>96719452-ec83-4ff8-b4ca-8e67a417ce96</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\images\clear.png" />
+    <Content Include="wwwroot\images\down.png" />
+    <Content Include="wwwroot\images\left.png" />
+    <Content Include="wwwroot\images\lowerleft.png" />
+    <Content Include="wwwroot\images\lowerright.png" />
+    <Content Include="wwwroot\images\right.png" />
+    <Content Include="wwwroot\images\up.png" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -20,9 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>
