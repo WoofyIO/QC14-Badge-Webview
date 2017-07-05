@@ -13,6 +13,10 @@ namespace qcbadge.Controllers
             if ((String.Compare(Startup.scode, s, true) == 0))
             {
                 ViewData["Message"] = "";
+                ViewData["0"] = 1;
+                ViewData["1"] = 1;
+                ViewData["38"] = 1;
+
                 return View();
             }
             else { return StatusCode(401); }
