@@ -10,15 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\images\clear.png" />
-    <Content Include="wwwroot\images\down.png" />
-    <Content Include="wwwroot\images\left.png" />
-    <Content Include="wwwroot\images\lowerleft.png" />
-    <Content Include="wwwroot\images\lowerright.png" />
-    <Content Include="wwwroot\images\right.png" />
-    <Content Include="wwwroot\images\up.png" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
