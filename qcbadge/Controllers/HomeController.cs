@@ -8,7 +8,7 @@ namespace qcbadge.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(string s)
+        public IActionResult Index(string s, string id)
         {
             if ((String.Compare(Startup.scode, s, true) == 0))
             {
@@ -17,10 +17,18 @@ namespace qcbadge.Controllers
                 ViewData["1"] = 1;
                 ViewData["38"] = 1;
 
+                if (String.IsNullOrEmpty(id))
+                {
+
+                }
+                else
+                {
+
+                }
+
                 return View();
             }
             else { return StatusCode(401); }
-
 
         }
 
