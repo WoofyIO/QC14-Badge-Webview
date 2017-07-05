@@ -3,110 +3,83 @@
 
     bool[] showimg = new bool[50];
 
-    showimg[0] = Convert.ToBoolean(ViewData["showimg-0"]);
-    showimg[1] = Convert.ToBoolean(ViewData["showimg-1"]);
-    showimg[2] = Convert.ToBoolean(ViewData["showimg-2"]);
-    showimg[3] = Convert.ToBoolean(ViewData["showimg-3"]);
-    showimg[4] = Convert.ToBoolean(ViewData["showimg-4"]);
-    showimg[5] = Convert.ToBoolean(ViewData["showimg-5"]);
-    showimg[6] = Convert.ToBoolean(ViewData["showimg-6"]);
-    showimg[7] = Convert.ToBoolean(ViewData["showimg-7"]);
-    showimg[8] = Convert.ToBoolean(ViewData["showimg-8"]);
-    showimg[9] = Convert.ToBoolean(ViewData["showimg-9"]);
-    showimg[10] = Convert.ToBoolean(ViewData["showimg-10"]);
-    showimg[11] = Convert.ToBoolean(ViewData["showimg-11"]);
-    showimg[12] = Convert.ToBoolean(ViewData["showimg-12"]);
-    showimg[13] = Convert.ToBoolean(ViewData["showimg-13"]);
-    showimg[14] = Convert.ToBoolean(ViewData["showimg-14"]);
-    showimg[15] = Convert.ToBoolean(ViewData["showimg-15"]);
-    showimg[16] = Convert.ToBoolean(ViewData["showimg-16"]);
-    showimg[17] = Convert.ToBoolean(ViewData["showimg-17"]);
-    showimg[18] = Convert.ToBoolean(ViewData["showimg-18"]);
-    showimg[19] = Convert.ToBoolean(ViewData["showimg-19"]);
-    showimg[20] = Convert.ToBoolean(ViewData["showimg-20"]);
-    showimg[21] = Convert.ToBoolean(ViewData["showimg-21"]);
-    showimg[22] = Convert.ToBoolean(ViewData["showimg-22"]);
-    showimg[23] = Convert.ToBoolean(ViewData["showimg-23"]);
-    showimg[24] = Convert.ToBoolean(ViewData["showimg-24"]);
-    showimg[25] = Convert.ToBoolean(ViewData["showimg-25"]);
-    showimg[26] = Convert.ToBoolean(ViewData["showimg-26"]);
-    showimg[27] = Convert.ToBoolean(ViewData["showimg-27"]);
-    showimg[28] = Convert.ToBoolean(ViewData["showimg-28"]);
-    showimg[29] = Convert.ToBoolean(ViewData["showimg-29"]);
-    showimg[30] = Convert.ToBoolean(ViewData["showimg-30"]);
-    showimg[31] = Convert.ToBoolean(ViewData["showimg-31"]);
-    showimg[32] = Convert.ToBoolean(ViewData["showimg-32"]);
-    showimg[33] = Convert.ToBoolean(ViewData["showimg-33"]);
-    showimg[34] = Convert.ToBoolean(ViewData["showimg-34"]);
-    showimg[35] = Convert.ToBoolean(ViewData["showimg-35"]);
-    showimg[36] = Convert.ToBoolean(ViewData["showimg-36"]);
-    showimg[37] = Convert.ToBoolean(ViewData["showimg-37"]);
-    showimg[38] = Convert.ToBoolean(ViewData["showimg-38"]);
-    showimg[39] = Convert.ToBoolean(ViewData["showimg-39"]);
-    showimg[40] = Convert.ToBoolean(ViewData["showimg-40"]);
-    showimg[41] = Convert.ToBoolean(ViewData["showimg-41"]);
-    showimg[42] = Convert.ToBoolean(ViewData["showimg-42"]);
-    showimg[43] = Convert.ToBoolean(ViewData["showimg-43"]);
-    showimg[44] = Convert.ToBoolean(ViewData["showimg-44"]);
-    showimg[45] = Convert.ToBoolean(ViewData["showimg-45"]);
-    showimg[46] = Convert.ToBoolean(ViewData["showimg-46"]);
-    showimg[47] = Convert.ToBoolean(ViewData["showimg-47"]);
-    showimg[48] = Convert.ToBoolean(ViewData["showimg-48"]);
-    showimg[49] = Convert.ToBoolean(ViewData["showimg-49"]);
+    for (int i = 0; i < 50; i++)
+    {
+        showimg[i] = Convert.ToBoolean(ViewData[i.ToString()]);
+    }
 
-    string[] imgname = new string[50];
+    string[] imgname = new string[100];
 
-    imgname[0] = "~/images/1-eb466664-61c2-11e7-a8e6-876b73c3292d.png";
-    imgname[1] = "~/images/2-eb467672-61c2-11e7-a8e7-bfbec3058f18.png";
-    imgname[2] = "~/images/3-eb467b68-61c2-11e7-a8e8-bf5dcee8f5a4.png";
-    imgname[3] = "~/images/4-eb468036-61c2-11e7-a8e9-8fa59b75eeab.png";
-    imgname[4] = "~/images/5-eb4683ce-61c2-11e7-a8ea-2fb6e98c9f95.png";
-    imgname[5] = "~/images/6-eb4689c8-61c2-11e7-a8eb-b7408fd42ab8.png";
-    imgname[6] = "~/images/7-eb468e50-61c2-11e7-a8ec-1f2ea9f0ab82.png";
-    imgname[7] = "~/images/8-eb46929c-61c2-11e7-a8ed-8b3acc903f02.png";
-    imgname[8] = "~/images/9-eb469634-61c2-11e7-a8ee-c739d63aed77.png";
-    imgname[9] = "~/images/10-eb469e40-61c2-11e7-a8ef-aff04cd092f4.png";
-    imgname[10] = "~/images/11-eb46ccc6-61c2-11e7-a8f0-2ba14a609735.png";
-    imgname[11] = "~/images/12-eb46e54e-61c2-11e7-a8f1-ffed42a32cd8.png";
-    imgname[12] = "~/images/13-eb473be8-61c2-11e7-a8f2-97169bffdcdc.png";
-    imgname[13] = "~/images/14-eb4757ea-61c2-11e7-a8f3-a758b83c2fd9.png";
-    imgname[14] = "~/images/15-eb476f3c-61c2-11e7-a8f4-0bc4085c363a.png";
-    imgname[15] = "~/images/16-eb478346-61c2-11e7-a8f5-9be54b52f15a.png";
-    imgname[16] = "~/images/17-eb479746-61c2-11e7-a8f6-1b0d93caff33.png";
-    imgname[17] = "~/images/18-eb47a9b6-61c2-11e7-a8f7-9f3b1ad0a5a8.png";
-    imgname[18] = "~/images/19-eb48481c-61c2-11e7-a8f8-6f45fa8c1975.png";
-    imgname[19] = "~/images/20-eb48689c-61c2-11e7-a8f9-539d89786ce3.png";
-    imgname[20] = "~/images/21-eb4883fe-61c2-11e7-a8fa-afd62b20ce4e.png";
-    imgname[21] = "~/images/22-eb489934-61c2-11e7-a8fb-5bfa98429be6.png";
-    imgname[22] = "~/images/23-eb48afbe-61c2-11e7-a8fc-afcec996e426.png";
-    imgname[23] = "~/images/24-eb48c526-61c2-11e7-a8fd-83245fd2c36f.png";
-    imgname[24] = "~/images/25-eb48dc0a-61c2-11e7-a8fe-cb747a657a8b.png";
-    imgname[25] = "~/images/26-eb48f1f4-61c2-11e7-a8ff-43cc47b01ac5.png";
-    imgname[26] = "~/images/27-eb4908e2-61c2-11e7-a900-637b158b5adf.png";
-    imgname[27] = "~/images/28-eb49232c-61c2-11e7-a901-ebf4867570bd.png";
-    imgname[28] = "~/images/29-eb4955b8-61c2-11e7-a902-0b0d12e5a8f4.png";
-    imgname[29] = "~/images/30-eb4a1fa2-61c2-11e7-a903-f7eca7a7f055.png";
-    imgname[30] = "~/images/31-eb4a3b68-61c2-11e7-a904-63fa9e2c47b0.png";
-    imgname[31] = "~/images/32-eb4a4f9a-61c2-11e7-a905-dbe0daf1a7ce.png";
-    imgname[32] = "~/images/33-eb4a6a3e-61c2-11e7-a906-9f652af3f189.png";
-    imgname[33] = "~/images/34-eb4a7fba-61c2-11e7-a907-cb5a4cba0a56.png";
-    imgname[34] = "~/images/35-eb4a9f40-61c2-11e7-a908-ff06d36f3dcd.png";
-    imgname[35] = "~/images/36-eb4ab2a0-61c2-11e7-a909-075d9873cefd.png";
-    imgname[36] = "~/images/37-eb4ac600-61c2-11e7-a90a-c7db722031cf.png";
-    imgname[37] = "~/images/38-eb4addf2-61c2-11e7-a90b-17d8801a3416.png";
-    imgname[38] = "~/images/39-eb4af26a-61c2-11e7-a90c-1300b2d20958.png";
-    imgname[39] = "~/images/40-eb4b0dea-61c2-11e7-a90d-1fb8e62fdf32.png";
-    imgname[40] = "~/images/41-eb4b2550-61c2-11e7-a90e-2b83f972e68d.png";
-    imgname[41] = "~/images/42-eb4b3b58-61c2-11e7-a90f-f73233bbb2e0.png";
-    imgname[42] = "~/images/43-eb4b51ba-61c2-11e7-a910-0746d91b5694.png";
-    imgname[43] = "~/images/44-eb4c48ea-61c2-11e7-a911-b7d36247c7ba.png";
-    imgname[44] = "~/images/45-eb4c97c8-61c2-11e7-a912-cfe6b83218f4.png";
-    imgname[45] = "~/images/46-eb4cb6b8-61c2-11e7-a913-97241579840b.png";
-    imgname[46] = "~/images/47-eb4ccdb0-61c2-11e7-a914-1b987c8ad9d8.png";
-    imgname[47] = "~/images/48-eb4ce412-61c2-11e7-a915-d794e6b54cea.png";
-    imgname[48] = "~/images/49-eb4cf9ca-61c2-11e7-a916-0ff9007929d3.png";
-    imgname[49] = "~/images/50-eb4d0ef6-61c2-11e7-a917-336b0f829aba.png";
+    imgname[0] = "/images/1-eb466664-61c2-11e7-a8e6-876b73c3292d.png";
+    imgname[1] = "/images/2-eb467672-61c2-11e7-a8e7-bfbec3058f18.png";
+    imgname[2] = "/images/3-eb467b68-61c2-11e7-a8e8-bf5dcee8f5a4.png";
+    imgname[3] = "/images/4-eb468036-61c2-11e7-a8e9-8fa59b75eeab.png";
+    imgname[4] = "/images/5-eb4683ce-61c2-11e7-a8ea-2fb6e98c9f95.png";
+    imgname[5] = "/images/6-eb4689c8-61c2-11e7-a8eb-b7408fd42ab8.png";
+    imgname[6] = "/images/7-eb468e50-61c2-11e7-a8ec-1f2ea9f0ab82.png";
+    imgname[7] = "/images/8-eb46929c-61c2-11e7-a8ed-8b3acc903f02.png";
+    imgname[8] = "/images/9-eb469634-61c2-11e7-a8ee-c739d63aed77.png";
+    imgname[9] = "/images/10-eb469e40-61c2-11e7-a8ef-aff04cd092f4.png";
+    imgname[10] = "/images/11-eb46ccc6-61c2-11e7-a8f0-2ba14a609735.png";
+    imgname[11] = "/images/12-eb46e54e-61c2-11e7-a8f1-ffed42a32cd8.png";
+    imgname[12] = "/images/13-eb473be8-61c2-11e7-a8f2-97169bffdcdc.png";
+    imgname[13] = "/images/14-eb4757ea-61c2-11e7-a8f3-a758b83c2fd9.png";
+    imgname[14] = "/images/15-eb476f3c-61c2-11e7-a8f4-0bc4085c363a.png";
+    imgname[15] = "/images/16-eb478346-61c2-11e7-a8f5-9be54b52f15a.png";
+    imgname[16] = "/images/17-eb479746-61c2-11e7-a8f6-1b0d93caff33.png";
+    imgname[17] = "/images/18-eb47a9b6-61c2-11e7-a8f7-9f3b1ad0a5a8.png";
+    imgname[18] = "/images/19-eb48481c-61c2-11e7-a8f8-6f45fa8c1975.png";
+    imgname[19] = "/images/20-eb48689c-61c2-11e7-a8f9-539d89786ce3.png";
+    imgname[20] = "/images/21-eb4883fe-61c2-11e7-a8fa-afd62b20ce4e.png";
+    imgname[21] = "/images/22-eb489934-61c2-11e7-a8fb-5bfa98429be6.png";
+    imgname[22] = "/images/23-eb48afbe-61c2-11e7-a8fc-afcec996e426.png";
+    imgname[23] = "/images/24-eb48c526-61c2-11e7-a8fd-83245fd2c36f.png";
+    imgname[24] = "/images/25-eb48dc0a-61c2-11e7-a8fe-cb747a657a8b.png";
+    imgname[25] = "/images/26-eb48f1f4-61c2-11e7-a8ff-43cc47b01ac5.png";
+    imgname[26] = "/images/27-eb4908e2-61c2-11e7-a900-637b158b5adf.png";
+    imgname[27] = "/images/28-eb49232c-61c2-11e7-a901-ebf4867570bd.png";
+    imgname[28] = "/images/29-eb4955b8-61c2-11e7-a902-0b0d12e5a8f4.png";
+    imgname[29] = "/images/30-eb4a1fa2-61c2-11e7-a903-f7eca7a7f055.png";
+    imgname[30] = "/images/31-eb4a3b68-61c2-11e7-a904-63fa9e2c47b0.png";
+    imgname[31] = "/images/32-eb4a4f9a-61c2-11e7-a905-dbe0daf1a7ce.png";
+    imgname[32] = "/images/33-eb4a6a3e-61c2-11e7-a906-9f652af3f189.png";
+    imgname[33] = "/images/34-eb4a7fba-61c2-11e7-a907-cb5a4cba0a56.png";
+    imgname[34] = "/images/35-eb4a9f40-61c2-11e7-a908-ff06d36f3dcd.png";
+    imgname[35] = "/images/36-eb4ab2a0-61c2-11e7-a909-075d9873cefd.png";
+    imgname[36] = "/images/37-eb4ac600-61c2-11e7-a90a-c7db722031cf.png";
+    imgname[37] = "/images/38-eb4addf2-61c2-11e7-a90b-17d8801a3416.png";
+    imgname[38] = "/images/39-eb4af26a-61c2-11e7-a90c-1300b2d20958.png";
+    imgname[39] = "/images/40-eb4b0dea-61c2-11e7-a90d-1fb8e62fdf32.png";
+    imgname[40] = "/images/41-eb4b2550-61c2-11e7-a90e-2b83f972e68d.png";
+    imgname[41] = "/images/42-eb4b3b58-61c2-11e7-a90f-f73233bbb2e0.png";
+    imgname[42] = "/images/43-eb4b51ba-61c2-11e7-a910-0746d91b5694.png";
+    imgname[43] = "/images/44-eb4c48ea-61c2-11e7-a911-b7d36247c7ba.png";
+    imgname[44] = "/images/45-eb4c97c8-61c2-11e7-a912-cfe6b83218f4.png";
+    imgname[45] = "/images/46-eb4cb6b8-61c2-11e7-a913-97241579840b.png";
+    imgname[46] = "/images/47-eb4ccdb0-61c2-11e7-a914-1b987c8ad9d8.png";
+    imgname[47] = "/images/48-eb4ce412-61c2-11e7-a915-d794e6b54cea.png";
+    imgname[48] = "/images/49-eb4cf9ca-61c2-11e7-a916-0ff9007929d3.png";
+    imgname[49] = "/images/50-eb4d0ef6-61c2-11e7-a917-336b0f829aba.png";
 
+    imgname[99] = "/images/clear.png";
+
+    string[] img = new string[50];
+
+    for (int i = 0; i < 50; i++)
+    {
+
+        if (showimg[i])
+        {
+
+            img[i] = imgname[i];
+
+        }
+        else
+        {
+            img[i] = imgname[99];
+        }
+
+    }
 
 
 }
@@ -117,7 +90,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[0]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -129,27 +102,27 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[1]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[2]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/right.png">
+        <img class="arrow" src="/images/right.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[3]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -165,7 +138,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -179,13 +152,13 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerright.png">
+        <img class="arrow" src="/images/lowerright.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -201,58 +174,58 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[4]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[5]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[6]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
-    </div>
-</div>
-<div class="square"><div class="content"> </div></div>
-<div class="square"><div class="content"> </div></div>
-<div class="square"><div class="content"> </div></div>
-<div class="square">
-    <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[7]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
+<div class="square"><div class="content"> </div></div>
+<div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[8]">
+    </div>
+</div>
+<div class="square"><div class="content"> </div></div>
+<div class="square">
+    <div class="content">
+        <img class="icon" src="@img[9]">
     </div>
 </div>
 
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[10]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -265,7 +238,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -275,7 +248,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -283,7 +256,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -291,7 +264,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -304,7 +277,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[11]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -314,7 +287,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[12]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -322,7 +295,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[13]">
     </div>
 </div>
 
@@ -331,17 +304,17 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[14]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/right.png">
+        <img class="arrow" src="/images/right.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[15]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -358,7 +331,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -366,7 +339,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -374,7 +347,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/up.png">
+        <img class="arrow" src="/images/up.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -389,7 +362,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[16]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -397,7 +370,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[17]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -405,7 +378,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[18]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -413,7 +386,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[19]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -428,7 +401,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -436,7 +409,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -445,14 +418,14 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerright.png">
+        <img class="arrow" src="/images/lowerright.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -463,50 +436,50 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[20]">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
-    </div>
-</div>
-
-<div class="square">
-    <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="icon" src="@img[21]">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
-    </div>
-</div>
-<div class="square"><div class="content"> </div></div>
-<div class="square"><div class="content"> </div></div>
-<div class="square"><div class="content"> </div></div>
-<div class="square">
-    <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/right.png">
+        <img class="icon" src="@img[22]">
+    </div>
+</div>
+<div class="square"><div class="content"> </div></div>
+<div class="square"><div class="content"> </div></div>
+<div class="square"><div class="content"> </div></div>
+<div class="square">
+    <div class="content">
+        <img class="icon" src="@img[23]">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="arrow" src="/images/right.png">
+    </div>
+</div>
+
+<div class="square">
+    <div class="content">
+        <img class="icon" src="@img[24]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -514,13 +487,13 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[25]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[26]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -533,14 +506,14 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -556,7 +529,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -569,23 +542,23 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[27]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[28]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/right.png">
+        <img class="arrow" src="/images/right.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[29]">
     </div>
 </div>
 
@@ -600,7 +573,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[30]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -613,25 +586,25 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerright.png">
+        <img class="arrow" src="/images/lowerright.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerright.png">
+        <img class="arrow" src="/images/lowerright.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -644,7 +617,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/down.png">
+        <img class="arrow" src="/images/down.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -657,33 +630,33 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[31]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[32]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[33]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/right.png">
+        <img class="arrow" src="/images/right.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[34]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -695,7 +668,7 @@
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[35]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -708,13 +681,13 @@
 
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerleft.png">
+        <img class="arrow" src="/images/lowerleft.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/lowerleft.png">
+        <img class="arrow" src="/images/lowerleft.png">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
@@ -736,27 +709,27 @@
 <!-- ROW 8 -->
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[36]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[37]">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="arrow" src="~/images/left.png">
+        <img class="arrow" src="/images/left.png">
     </div>
 </div>
 <div class="square">
     <div class="content">
-        <img class="icon" src="~/images/clear.png">
+        <img class="icon" src="@img[38]">
     </div>
 </div>
 <div class="square"><div class="content"> </div></div>
