@@ -163,12 +163,25 @@ namespace qcbadge.Controllers
                     System.Diagnostics.Debug.WriteLine("*************************************");
                     System.Diagnostics.Debug.WriteLine("*************************************");
                     System.Diagnostics.Debug.WriteLine("*************************************");
+
                     String qcData = advertData.Substring(24, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
 
-                    int badgeId = Convert.ToInt32(qcData.Substring(0, 3), 16);
+                    String badgeIdStr = qcData.Substring(0, 4);
+                    System.Diagnostics.Debug.WriteLine(badgeIdStr);
+                    int badgeId = Convert.ToInt32(badgeIdStr, 16);
                     System.Diagnostics.Debug.WriteLine(badgeId);
 
+                    String curIconStr = qcData.Substring(4, 2);
+                    System.Diagnostics.Debug.WriteLine(curIconStr);
+                    int curIcon = Convert.ToInt32(curIconStr, 16);
+                    System.Diagnostics.Debug.WriteLine(curIcon);
+
+                    //Need to convert the int to a bit array
+                    String curIconArrStr = qcData.Substring(8, 10);
+                    System.Diagnostics.Debug.WriteLine(curIconArrStr);
+                    ulong curIconArr = Convert.ToUInt64(curIconArrStr, 16);
+                    System.Diagnostics.Debug.WriteLine(curIconArr);
 
                     return StatusCode(200);
 
