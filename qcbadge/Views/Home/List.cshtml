@@ -142,14 +142,15 @@
 
 }
 
-@for(int i = 0; i < 39; i++)
-{
+<table>
+    @for (int i = 0; i < 39; i++)
+    {
 
-    <tr>
-        <td>@img[i]</td>
-        <td>@desc[i]</td>
-    </tr>
+        <tr>
+            <td><img class="icon" src="@img[i]" /></td>
+            <td>@desc[i]</td>
+        </tr>
 
-}
-
+    }
+</table>
 <div>@ViewData["Message"]</div>
