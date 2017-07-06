@@ -136,6 +136,8 @@ namespace qcbadge.Controllers
             //     [DDDDDDDDDD] < -icon bit array 39...........0
             //     [EE] < -Checksum
             //     0908[0000000000000000] < -End + Crypto
+            //
+            //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE09080000000000000000
 
             if (String.IsNullOrEmpty(advertData))
             {
@@ -145,7 +147,19 @@ namespace qcbadge.Controllers
             }
             else
             {
-                return StatusCode(200);
+                String header = "0x0201040319DC190FFFD304";
+                String footer = "09080000000000000000";
+
+                if(advertData.StartsWith(header) && advertData.EndsWith(footer))
+                {
+                    return StatusCode(200);
+                }
+                else
+                {
+                    return StatusCode(400);
+                }
+
+                
             }
 
         }
