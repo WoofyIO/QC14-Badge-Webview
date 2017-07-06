@@ -180,8 +180,16 @@ namespace qcbadge.Controllers
                     //Need to convert the int to a bit array
                     String curIconArrStr = qcData.Substring(8, 10);
                     System.Diagnostics.Debug.WriteLine(curIconArrStr);
-                    ulong curIconArr = Convert.ToUInt64(curIconArrStr, 16);
+                    long curIconArr = Convert.ToInt64(curIconArrStr, 16);
                     System.Diagnostics.Debug.WriteLine(curIconArr);
+
+                    bool[] bitSet = new bool[40];
+                    
+                    for(int i = 0; i < 40; i++)
+                    {
+                        bitSet[i] = IsBitSet(curIconArr, i);
+                        System.Diagnostics.Debug.WriteLine(bitSet[i]);
+                    }
 
                     return StatusCode(200);
 
@@ -198,6 +206,11 @@ namespace qcbadge.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        bool IsBitSet(long b, int pos)
+        {
+            return (b & (1 << pos)) != 0;
         }
     }
 }
