@@ -1,7 +1,7 @@
 ﻿USE [dcbadge]
 GO
 
-DROP TABLE [dbo].[qcbdage]
+DROP TABLE [dbo].[qcbadge]
 GO
 
 SET ANSI_NULLS ON
@@ -10,7 +10,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[qcbdage](
+CREATE TABLE [dbo].[qcbadge](
 	[badgeid] [int] IDENTITY(1,1) NOT NULL,
 	[0] [bit] DEFAULT 0 NOT NULL,
 	[1] [bit] DEFAULT 0 NOT NULL,
@@ -71,9 +71,9 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-WHILE (SELECT COUNT([badgeid]) FROM [qcbdage]) < 300 
+WHILE (SELECT COUNT([badgeid]) FROM [qcbadge]) < 300 
 BEGIN  
-INSERT INTO [dbo].[qcbdage]
+INSERT INTO [dbo].[qcbadge]
            ([0])
      VALUES
            (0) 
