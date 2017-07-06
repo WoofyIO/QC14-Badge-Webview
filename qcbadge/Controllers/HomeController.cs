@@ -138,6 +138,7 @@ namespace qcbadge.Controllers
             //     0908[0000000000000000] < -End + Crypto
             //
             //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE09080000000000000000
+            //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE09080000000000000000 = Badgeid = 122/290
 
             if (String.IsNullOrEmpty(advertData))
             {
@@ -152,7 +153,25 @@ namespace qcbadge.Controllers
 
                 if(advertData.StartsWith(header) && advertData.EndsWith(footer))
                 {
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    String qcData = advertData.Substring(24, 20);
+                    System.Diagnostics.Debug.WriteLine(qcData);
+
+                    int badgeId = Convert.ToInt32(qcData.Substring(0, 3), 16);
+                    System.Diagnostics.Debug.WriteLine(badgeId);
+
+
                     return StatusCode(200);
+
                 }
                 else
                 {
