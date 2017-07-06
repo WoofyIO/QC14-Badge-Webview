@@ -208,7 +208,7 @@ namespace qcbadge.Controllers
             return View();
         }
 
-        bool IsBitSet(long b, int pos)
+        private bool IsBitSet(long b, int pos)
         {
             return (b & (1 << pos)) != 0;
         }
