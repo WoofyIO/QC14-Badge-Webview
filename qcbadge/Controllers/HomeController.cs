@@ -8,9 +8,10 @@ namespace qcbadge.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(string s, string id)
+        public IActionResult Index(string s, string id, int refresh)
         {
             Helpers.Sql sql = new Helpers.Sql();
+            ViewData["refresh"] = refresh;
 
             if ((String.Compare(Startup.scode, s, true) == 0))
             {
