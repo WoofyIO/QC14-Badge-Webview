@@ -137,7 +137,16 @@ namespace qcbadge.Controllers
             //     [EE] < -Checksum
             //     0908[0000000000000000] < -End + Crypto
 
+            if (String.IsNullOrEmpty(advertData))
+            {
 
+                return StatusCode(400);
+
+            }
+            else
+            {
+                return StatusCode(200);
+            }
 
         }
         public IActionResult Error()
