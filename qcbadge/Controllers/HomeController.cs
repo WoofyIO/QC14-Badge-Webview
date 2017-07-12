@@ -164,6 +164,12 @@ namespace qcbadge.Controllers
                     System.Diagnostics.Debug.WriteLine("*************************************");
                     System.Diagnostics.Debug.WriteLine("*************************************");
 
+                    //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
+
+                    //for base64 convert
+                    byte[] bytes = Convert.FromBase64String("test");
+                    string hex = BitConverter.ToString(bytes);
+
                     String qcData = advertData.Substring(24, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
 
