@@ -60,9 +60,9 @@ CREATE TABLE [dbo].[qcbadge](
 	[45] [bit] DEFAULT 0 NOT NULL,
 	[46] [bit] DEFAULT 0 NOT NULL,
 	[47] [bit] DEFAULT 0 NOT NULL,
-	[48] [bit] DEFAULT 0 NOT NULL,
-	[49] [bit] DEFAULT 0 NOT NULL,
+	[curr] [int] DEFAULT NULL,
 	[lastseen] [datetime] NULL
+
 PRIMARY KEY CLUSTERED 
 (
 	[badgeid] ASC
