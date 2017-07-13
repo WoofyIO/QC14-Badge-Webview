@@ -21,13 +21,13 @@ namespace qcbadge.Controllers
                 ViewData["1"] = 0;
                 ViewData["38"] = 0;
 
-                bool[] imglist = new bool[50];
+                bool[] imglist = new bool[48];
 
                 if (String.IsNullOrEmpty(id))
                 {
                     imglist = sql.selectGlobalView();
 
-                    for (int i = 0; i < 50; i++)
+                    for (int i = 0; i < 48; i++)
                     {
                         ViewData[i.ToString()] = imglist[i];
                     }
@@ -38,7 +38,7 @@ namespace qcbadge.Controllers
                     badgeid = badgeid - 1;
                     imglist = sql.selectIndervidualView(badgeid);
 
-                    for (int i = 0; i < 50; i++)
+                    for (int i = 0; i < 48; i++)
                     {
                         ViewData[i.ToString()] = imglist[i];
                     }
@@ -63,13 +63,13 @@ namespace qcbadge.Controllers
                 ViewData["1"] = 0;
                 ViewData["38"] = 0;
 
-                bool[] imglist = new bool[50];
+                bool[] imglist = new bool[48];
 
                 if (String.IsNullOrEmpty(id))
                 {
                     imglist = sql.selectGlobalView();
 
-                    for (int i = 0; i < 50; i++)
+                    for (int i = 0; i < 48; i++)
                     {
                         ViewData[i.ToString()] = imglist[i];
                     }
@@ -80,7 +80,7 @@ namespace qcbadge.Controllers
                     badgeid = badgeid - 1;
                     imglist = sql.selectIndervidualView(badgeid);
 
-                    for (int i = 0; i < 50; i++)
+                    for (int i = 0; i < 48; i++)
                     {
                         ViewData[i.ToString()] = imglist[i];
                     }
