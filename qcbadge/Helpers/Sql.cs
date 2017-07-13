@@ -73,6 +73,105 @@ namespace qcbadge.Helpers
             return rtn;
         }
 
+        public string selectGlobalLastSeen()
+        {
+            //System.Diagnostics.Debug.WriteLine("Got to selectGlobalView");
+            string rtn = "";
+
+
+                //System.Diagnostics.Debug.WriteLine("Into loop " + i);
+
+                try
+                {
+                    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                    builder.DataSource = DataSource;
+                    builder.UserID = UserID;
+                    builder.Password = Password;
+                    builder.InitialCatalog = db;
+
+                    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                    {
+                        connection.Open();
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("SELECT [lastseen] ");
+                        sb.Append("FROM " + table);
+                        sb.Append(" WHERE [lastseen] IN (SELECT max([lastseen]) FROM [qcbadge]);");
+                        String sql = sb.ToString();
+                        //System.Diagnostics.Debug.WriteLine(sql);
+
+
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    rtn = reader[0].ToString();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (SqlException e)
+                {
+                    System.Diagnostics.Debug.WriteLine(e.ToString());
+                }
+
+            
+
+            return rtn;
+        }
+
+        public string[] selectIndervidualLastSeen(int badgeid)
+        {
+            //System.Diagnostics.Debug.WriteLine("Got to selectGlobalView");
+            string[] rtn = new string[2];
+
+
+            //System.Diagnostics.Debug.WriteLine("Into loop " + i);
+
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = DataSource;
+                builder.UserID = UserID;
+                builder.Password = Password;
+                builder.InitialCatalog = db;
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT [lastseen], [curr] ");
+                    sb.Append("FROM " + table);
+                    sb.Append(" WHERE [badgeid] = '" + badgeid + "';");
+                    String sql = sb.ToString();
+                    //System.Diagnostics.Debug.WriteLine(sql);
+
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rtn[0] = reader[0].ToString();
+                                rtn[1] = reader[1].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.ToString());
+            }
+
+
+
+            return rtn;
+        }
+
         public bool[] selectIndervidualView(int badgeid)
         {
             bool[] rtn = new bool[48];

@@ -59,15 +59,17 @@ namespace qcbadge.Controllers
             if ((String.Compare(Startup.scode, s, true) == 0))
             {
                 ViewData["Message"] = "";
-                ViewData["0"] = 0;
-                ViewData["1"] = 0;
-                ViewData["38"] = 0;
+                ViewData["lastseen"] = "";
+                ViewData["indv"] = 0;
+                ViewData["curr"] = 99;
 
                 bool[] imglist = new bool[48];
+                
 
                 if (String.IsNullOrEmpty(id))
                 {
                     imglist = sql.selectGlobalView();
+                    ViewData["lastseen"] = sql.selectGlobalLastSeen();
 
                     for (int i = 0; i < 48; i++)
                     {
@@ -76,9 +78,17 @@ namespace qcbadge.Controllers
                 }
                 else
                 {
+                    ViewData["indv"] = 1;
                     int badgeid = Convert.ToInt32(id);
                     badgeid = badgeid + 1;
                     imglist = sql.selectIndervidualView(badgeid);
+                    string[] listdata = sql.selectIndervidualLastSeen(badgeid);
+                    ViewData["lastseen"] = listdata[0];
+
+                    if(!String.IsNullOrEmpty(listdata[1]))
+                    {
+                        ViewData["curr"] = Convert.ToInt32(listdata[1]);
+                    }
 
                     for (int i = 0; i < 48; i++)
                     {

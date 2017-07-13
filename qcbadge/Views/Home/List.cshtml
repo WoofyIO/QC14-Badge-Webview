@@ -2,6 +2,9 @@
     ViewData["Title"] =  "Map View";
 
     bool[] showimg = new bool[50];
+    bool indv = Convert.ToBoolean(ViewData["indv"]);
+    int curr = Convert.ToInt32(ViewData["curr"]);
+
 
     for (int i = 0; i < 50; i++)
     {
@@ -114,7 +117,7 @@
     imgdesc[47] = "/images/48-eb4ce412-61c2-11e7-a915-d794e6b54cea.png";
 
 
-    imgdesc[99] = "???????";
+    imgdesc[99] = " ";
 
     string[] img = new string[48];
     string[] desc = new string[48];
@@ -151,4 +154,17 @@
 
     }
 </table>
+@if (indv)
+{
+
+    <tr>
+        <td>Your Current Icon</td>
+        <td><img class="icon" src="@img[curr]" /></td>
+    </tr>
+
+}
+<div>Last Updated: @ViewData["lastseen"]</div>
 <div>@ViewData["Message"]</div>
+
+
+
