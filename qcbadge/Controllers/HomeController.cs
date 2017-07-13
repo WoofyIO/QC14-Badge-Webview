@@ -202,6 +202,7 @@ namespace qcbadge.Controllers
                                  .Select(c => int.Parse(c.ToString())) // convert each char to int
                                  .ToArray(); // Convert IEnumerable from select to Array
 
+                    //Bitset is inversed from spec. LSB==47
                     for (int i = 0; i < 48; i++)
                     {
                         System.Diagnostics.Debug.WriteLine("i: " + i);
