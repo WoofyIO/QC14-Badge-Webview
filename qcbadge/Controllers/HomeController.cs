@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 
 namespace qcbadge.Controllers
 {
@@ -165,20 +166,10 @@ namespace qcbadge.Controllers
                 }
 
                 String header = "0x0201040319DC190FFFD304";
-                String footer = "09080000000000000000";
+                String footer = "090841524F5947424956";
 
                 if(advertData.StartsWith(header) && advertData.EndsWith(footer))
                 {
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
-                    //System.Diagnostics.Debug.WriteLine("*************************************");
 
                     //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 
@@ -199,16 +190,21 @@ namespace qcbadge.Controllers
                     System.Diagnostics.Debug.WriteLine(curIcon);
 
                     //Need to convert the int to a bit array
-                    String curIconArrStr = qcData.Substring(8, 10);
+                    String curIconArrStr = qcData.Substring(6, 12);
                     System.Diagnostics.Debug.WriteLine(curIconArrStr);
                     long curIconArr = Convert.ToInt64(curIconArrStr, 16);
                     System.Diagnostics.Debug.WriteLine(curIconArr);
 
-                    bool[] bitSet = new bool[48];
-                    
-                    for(int i = 0; i < 48; i++)
+
+                    string binaryArr = Convert.ToString(curIconArr, 2); //Convert to binary in a string
+
+                    int[] bitSet = binaryArr.PadLeft(48, '0') // Add 0's from left
+                                 .Select(c => int.Parse(c.ToString())) // convert each char to int
+                                 .ToArray(); // Convert IEnumerable from select to Array
+
+                    for (int i = 0; i < 48; i++)
                     {
-                        bitSet[i] = IsBitSet(curIconArr, i);
+                        System.Diagnostics.Debug.WriteLine("i: " + i);
                         System.Diagnostics.Debug.WriteLine(bitSet[i]);
                     }
 
