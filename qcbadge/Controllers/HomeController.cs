@@ -139,6 +139,7 @@ namespace qcbadge.Controllers
             //
             //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE09080000000000000000
             //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE09080000000000000000 = Badgeid = 122/290
+            //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQgAAAAAAAAAAA==
 
             if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
             {
@@ -152,7 +153,15 @@ namespace qcbadge.Controllers
                 if(!String.IsNullOrEmpty(advertData64))
                 {
                     byte[] bytes = Convert.FromBase64String(advertData64);
-                    advertData = BitConverter.ToString(bytes);
+                    advertData = "0x" + BitConverter.ToString(bytes);
+
+                    var charsToRemove = new string[] { "-" };
+                    foreach (var c in charsToRemove)
+                    {
+                        advertData = advertData.Replace(c, string.Empty);
+                    }
+
+                    System.Diagnostics.Debug.WriteLine(advertData);
                 }
 
                 String header = "0x0201040319DC190FFFD304";
@@ -160,16 +169,16 @@ namespace qcbadge.Controllers
 
                 if(advertData.StartsWith(header) && advertData.EndsWith(footer))
                 {
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
-                    System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
+                    //System.Diagnostics.Debug.WriteLine("*************************************");
 
                     //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 
@@ -195,7 +204,7 @@ namespace qcbadge.Controllers
                     long curIconArr = Convert.ToInt64(curIconArrStr, 16);
                     System.Diagnostics.Debug.WriteLine(curIconArr);
 
-                    bool[] bitSet = new bool[40];
+                    bool[] bitSet = new bool[48];
                     
                     for(int i = 0; i < 40; i++)
                     {
