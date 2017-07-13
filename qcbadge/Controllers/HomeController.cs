@@ -182,7 +182,7 @@ namespace qcbadge.Controllers
 
                     String badgeIdStr = qcData.Substring(0, 4);
                     System.Diagnostics.Debug.WriteLine(badgeIdStr);
-                    int badgeId = Convert.ToInt32(badgeIdStr, 16) - 1;
+                    int badgeId = Convert.ToInt32(badgeIdStr, 16) + 1;
                     System.Diagnostics.Debug.WriteLine(badgeId);
 
                     String curIconStr = qcData.Substring(4, 2);
