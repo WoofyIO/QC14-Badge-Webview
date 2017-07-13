@@ -35,7 +35,7 @@ namespace qcbadge.Controllers
                 else
                 {
                     int badgeid = Convert.ToInt32(id);
-                    badgeid = badgeid - 1;
+                    badgeid = badgeid + 1;
                     imglist = sql.selectIndervidualView(badgeid);
 
                     for (int i = 0; i < 48; i++)
@@ -77,7 +77,7 @@ namespace qcbadge.Controllers
                 else
                 {
                     int badgeid = Convert.ToInt32(id);
-                    badgeid = badgeid - 1;
+                    badgeid = badgeid + 1;
                     imglist = sql.selectIndervidualView(badgeid);
 
                     for (int i = 0; i < 48; i++)
