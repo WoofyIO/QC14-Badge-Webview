@@ -130,9 +130,9 @@ namespace qcbadge.Helpers
             return rtn;
         }
 
-        public void updateBadge(String code, string email, string custcode, string paycode, string qrcode)
+        public int updateBadge(int badgeId, int curIcon, int[] bitSet)
         {
-
+            int rtn = 0;
             try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -145,22 +145,33 @@ namespace qcbadge.Helpers
                 {
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("UPDATE " + table + " SET codeused = 1, email = '" + email + "', custcode = '" + custcode + "', paycode = '" + paycode + "', qrcode = '" + qrcode + "', datepayed = CURRENT_TIMESTAMP WHERE [requestcode] = '" + code + "';");
+                    sb.Append("UPDATE " + table + " SET [curr] = '" + curIcon + "', ");
+
+                    int z = 47;
+                    for (int i = 0; i < 48; i++)
+                    {
+                        sb.Append("[" + z + "] = '" + bitSet[i] + "', ");
+                        z = z - 1;
+                    }
+                        
+
+                    sb.Append("[lastseen] = CURRENT_TIMESTAMP WHERE [badgeid] = '" + badgeId + "';");
                     String sql = sb.ToString();
+                    System.Diagnostics.Debug.WriteLine(sb.ToString());
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
 
-                        int rowsAffected = command.ExecuteNonQuery();
+                        rtn = command.ExecuteNonQuery();
 
                     }
                 }
             }
             catch (SqlException e)
             {
-                Console.WriteLine(e.ToString());
+                System.Diagnostics.Debug.WriteLine(e.ToString());
             }
 
-
+            return rtn;
 
         }
 

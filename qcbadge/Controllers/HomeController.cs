@@ -150,8 +150,9 @@ namespace qcbadge.Controllers
             }
             else
             {
+                Helpers.Sql sql = new Helpers.Sql();
 
-                if(!String.IsNullOrEmpty(advertData64))
+                if (!String.IsNullOrEmpty(advertData64))
                 {
                     byte[] bytes = Convert.FromBase64String(advertData64);
                     advertData = "0x" + BitConverter.ToString(bytes);
@@ -209,7 +210,21 @@ namespace qcbadge.Controllers
                         System.Diagnostics.Debug.WriteLine(bitSet[i]);
                     }
 
-                    return StatusCode(200);
+
+
+                    int rows = sql.updateBadge(badgeId, curIcon, bitSet);
+                    System.Diagnostics.Debug.WriteLine(rows);
+
+                    if(rows == 1)
+                    {
+                        return StatusCode(201);
+                    }
+                    else
+                    {
+                        return StatusCode(200);
+                    }
+
+                    
 
                 }
                 else
