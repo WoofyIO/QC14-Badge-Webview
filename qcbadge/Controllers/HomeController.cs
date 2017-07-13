@@ -226,9 +226,5 @@ namespace qcbadge.Controllers
             return View();
         }
 
-        private bool IsBitSet(long b, int pos)
-        {
-            return (b & (1 << pos)) != 0;
-        }
     }
 }
