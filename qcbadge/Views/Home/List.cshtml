@@ -1,9 +1,16 @@
 ﻿@{
-    ViewData["Title"] =  "Map View";
+
+    ViewData["Title"] = "Map View";
 
     bool[] showimg = new bool[50];
     bool indv = Convert.ToBoolean(ViewData["indv"]);
     int curr = Convert.ToInt32(ViewData["curr"]);
+
+    if(curr > 47)
+    {
+        curr = 99;
+
+    }
 
 
     for (int i = 0; i < 50; i++)
@@ -159,7 +166,7 @@
 
     <tr>
         <td>Your Current Icon</td>
-        <td><img class="icon" src="@img[curr]" /></td>
+        <td><img class="icon" src="@imgname[curr]" /></td>
     </tr>
 
 }

@@ -157,6 +157,9 @@ namespace qcbadge.Helpers
                             {
                                 rtn[0] = reader[0].ToString();
                                 rtn[1] = reader[1].ToString();
+
+                                System.Diagnostics.Debug.WriteLine(rtn[0]);
+                                System.Diagnostics.Debug.WriteLine(rtn[1]);
                             }
                         }
                     }
