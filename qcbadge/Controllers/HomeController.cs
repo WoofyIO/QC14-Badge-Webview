@@ -92,7 +92,7 @@ namespace qcbadge.Controllers
 
         }
 
-        public IActionResult Update(string advertData)
+        public IActionResult Update(string advertData, string advertData64)
         {
 
             //// Flags; this sets the device to use limited discoverable
@@ -116,7 +116,7 @@ namespace qcbadge.Controllers
             //0x00, // Badge ID MSB
             //0x00, // Badge ID LSB
             //0x00, // Current icon ID
-            //0x00, // RESERVED
+            //0x00, // icon 40..47
             //0x00, // icon 32..39
             //0x00, // icon 24..31
             //0x00, // icon 16..23
@@ -140,14 +140,21 @@ namespace qcbadge.Controllers
             //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE09080000000000000000
             //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE09080000000000000000 = Badgeid = 122/290
 
-            if (String.IsNullOrEmpty(advertData))
+            if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
             {
 
-                return StatusCode(400);
+                return StatusCode(200);
 
             }
             else
             {
+
+                if(!String.IsNullOrEmpty(advertData64))
+                {
+                    byte[] bytes = Convert.FromBase64String(advertData64);
+                    advertData = BitConverter.ToString(bytes);
+                }
+
                 String header = "0x0201040319DC190FFFD304";
                 String footer = "09080000000000000000";
 
@@ -167,8 +174,7 @@ namespace qcbadge.Controllers
                     //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 
                     //for base64 convert
-                    byte[] bytes = Convert.FromBase64String("test");
-                    string hex = BitConverter.ToString(bytes);
+                    
 
                     String qcData = advertData.Substring(24, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
