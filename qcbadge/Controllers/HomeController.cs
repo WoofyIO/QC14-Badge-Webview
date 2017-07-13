@@ -132,14 +132,14 @@ namespace qcbadge.Controllers
             //     0x0201040319DC190FFFD304 < -Fixed header
             //     [AAAA] < -Badge ID 0 - 289 In Dec / 0000 - 0121 in Hex
             //     [BB] < -Current Icon
-            //     [CC] < -RESERVED(incase jonathan wants more than 40 icons ?)
-            //     [DDDDDDDDDD] < -icon bit array 39...........0
+            //     //NOPE NOT ANYMORE//[CC] < -RESERVED(incase jonathan wants more than 40 icons ?)
+            //     [CCDDDDDDDDDD] < -icon bit array 47...........0
             //     [EE] < -Checksum
-            //     0908[0000000000000000] < -End + Crypto
+            //     0908[41524F5947424956] < -End + Crypto
             //
-            //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE09080000000000000000
-            //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE09080000000000000000 = Badgeid = 122/290
-            //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQgAAAAAAAAAAA==
+            //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE090841524F5947424956
+            //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE090841524F5947424956 = Badgeid = 122/290
+            //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQhBUk9ZR0JJVg==
 
             if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
             {
@@ -206,7 +206,7 @@ namespace qcbadge.Controllers
 
                     bool[] bitSet = new bool[48];
                     
-                    for(int i = 0; i < 40; i++)
+                    for(int i = 0; i < 48; i++)
                     {
                         bitSet[i] = IsBitSet(curIconArr, i);
                         System.Diagnostics.Debug.WriteLine(bitSet[i]);
