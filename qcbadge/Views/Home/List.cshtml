@@ -164,14 +164,17 @@
 @if (indv)
 {
 
-    <tr>
-        <td>Your Current Icon</td>
-        <td><img class="icon" src="@imgname[curr]" /></td>
-    </tr>
+    <table>
+        <tr>
+            <td>Your Current Icon</td>
+            <td><img class="icon" src="@imgname[curr]" /></td>
+        </tr>
+    </table>
 
 }
-<div>Last Updated: @ViewData["lastseen"]</div>
-<div>@ViewData["Message"]</div>
+        <div>Last Updated: @ViewData["lastseen"] GMT</div>
+
+        <div>@ViewData["Message"]</div>
 
 
 
