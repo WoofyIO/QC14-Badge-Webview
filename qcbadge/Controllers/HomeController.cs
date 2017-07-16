@@ -176,17 +176,19 @@ namespace qcbadge.Controllers
                     System.Diagnostics.Debug.WriteLine(advertData);
                 }
 
-                String header = "0x0201040319DC190FFFD304";
-                String footer = "090841524F5947424956";
+                //String header = "0x0201040319DC190FFFD304";
+                //String footer = "090841524F5947424956";
 
-                if(advertData.StartsWith(header) && advertData.EndsWith(footer))
+                String header = "0xD304";
+
+                if (advertData.StartsWith(header))
                 {
 
                     //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 
                     //for base64 convert
 
-                    String crcData = advertData.Substring(24, 18);
+                    String crcData = advertData.Substring(2, 18);
                     System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData.ToString());
                     ushort crcrsp = CCITT_CRC16(crcData);
                     System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp.ToString());
@@ -200,7 +202,7 @@ namespace qcbadge.Controllers
 
 
 
-                    String qcData = advertData.Substring(24, 20);
+                    String qcData = advertData.Substring(2, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
 
                     String badgeIdStr = qcData.Substring(0, 4);
