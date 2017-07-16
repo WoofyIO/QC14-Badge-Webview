@@ -185,7 +185,20 @@ namespace qcbadge.Controllers
                     //http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 
                     //for base64 convert
-                    
+
+                    String crcData = advertData.Substring(24, 18);
+                    System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData.ToString());
+                    ushort crcrsp = CCITT_CRC16(crcData);
+                    System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp.ToString());
+                    byte[] recbytes = new byte[2];
+                    recbytes[0] = BitConverter.GetBytes(crcrsp)[0];
+                    recbytes[1] = BitConverter.GetBytes(crcrsp)[1];
+                    System.Diagnostics.Debug.WriteLine("CRC 1st byte: " + recbytes[0].ToString());
+                    System.Diagnostics.Debug.WriteLine("CRC 2nd byte: " + recbytes[1].ToString());
+                    byte crc8res = (byte)(recbytes[0] ^ recbytes[1]);
+                    System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res.ToString());
+
+
 
                     String qcData = advertData.Substring(24, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
@@ -246,6 +259,38 @@ namespace qcbadge.Controllers
             }
 
         }
+
+        private ushort CCITT_CRC16(string strInput)
+        {
+            ushort data;
+            ushort crc = 0xFFFF;
+            byte[] bytes = StringToByteArray(strInput);
+            for (int j = 0; j < bytes.Length; j++)
+            {
+                crc = (ushort)(crc ^ bytes[j]);
+                for (int i = 0; i < 8; i++)
+                {
+                    if ((crc & 0x0001) == 1)
+                        crc = (ushort)((crc >> 1) ^ 0x8408);
+                    else
+                        crc >>= 1;
+                }
+            }
+            crc = (ushort)~crc;
+            data = crc;
+            crc = (ushort)((crc << 8) ^ (data >> 8 & 0xFF));
+            return crc;
+        }
+
+        public static byte[] StringToByteArray(String hex)
+        {
+            int NumberChars = hex.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
+        }
+
         public IActionResult Error()
         {
             return View();
