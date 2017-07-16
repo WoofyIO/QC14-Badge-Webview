@@ -150,6 +150,8 @@ namespace qcbadge.Controllers
             //
             //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE090841524F5947424956
             //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE090841524F5947424956 = Badgeid = 122/290
+            //     The advt data only.. 0xD304AAAABBCCDDDDDDDDDDEE
+            //     The advt data only id 122 0xD3040122BBCCDDDDDDDDDDEE
             //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQhBUk9ZR0JJVg==
 
             if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
@@ -188,7 +190,9 @@ namespace qcbadge.Controllers
 
                     //for base64 convert
 
-                    String crcData = advertData.Substring(2, 18);
+
+                    //lets do some CRC things
+                    String crcData = advertData.Substring(6, 18);
                     System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData.ToString());
                     ushort crcrsp = CCITT_CRC16(crcData);
                     System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp.ToString());
@@ -202,7 +206,7 @@ namespace qcbadge.Controllers
 
 
 
-                    String qcData = advertData.Substring(2, 20);
+                    String qcData = advertData.Substring(6, 18);
                     System.Diagnostics.Debug.WriteLine(qcData);
 
                     String badgeIdStr = qcData.Substring(0, 4);
