@@ -192,7 +192,7 @@ namespace qcbadge.Controllers
 
 
                     //lets do some CRC things
-                    String crcData = advertData.Substring(6, 18);
+                    String crcData = advertData.Substring(6, 20);
                     System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData.ToString());
                     ushort crcrsp = CCITT_CRC16(crcData);
                     System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp.ToString());
@@ -206,7 +206,7 @@ namespace qcbadge.Controllers
 
 
 
-                    String qcData = advertData.Substring(6, 18);
+                    String qcData = advertData.Substring(6, 20);
                     System.Diagnostics.Debug.WriteLine(qcData);
 
                     String badgeIdStr = qcData.Substring(0, 4);
@@ -220,7 +220,7 @@ namespace qcbadge.Controllers
                     System.Diagnostics.Debug.WriteLine(curIcon);
 
                     //Need to convert the int to a bit array
-                    String curIconArrStr = qcData.Substring(6, 12);
+                    String curIconArrStr = qcData.Substring(6, 14);
                     System.Diagnostics.Debug.WriteLine(curIconArrStr);
                     long curIconArr = Convert.ToInt64(curIconArrStr, 16);
                     System.Diagnostics.Debug.WriteLine(curIconArr);
