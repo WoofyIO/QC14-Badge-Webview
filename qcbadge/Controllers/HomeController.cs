@@ -204,8 +204,9 @@ namespace qcbadge.Controllers
                     byte crc8res = (byte)(recbytes[0] ^ recbytes[1]);
                     System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res);
                     String crcFinal = advertData.Substring(26, 2);
+                    int crcFinalInt = Convert.ToInt32(crcFinal, 16);
 
-                    if(crcFinal.Equals(crc8res))
+                    if (crcFinalInt == crc8res)
                     {
                         String qcData = advertData.Substring(6, 22);
                         System.Diagnostics.Debug.WriteLine(qcData);
