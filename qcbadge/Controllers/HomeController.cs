@@ -151,7 +151,7 @@ namespace qcbadge.Controllers
             //     0x0201040319DC190FFFD304AAAABBCCDDDDDDDDDDEE090841524F5947424956
             //     0x0201040319DC190FFFD3040122BBCCDDDDDDDDDDEE090841524F5947424956 = Badgeid = 122/290
             //     The advt data only.. 0xD304AAAABBCCDDDDDDDDDDEE
-            //     The advt data only id 122 0xD3040122BBCCDDDDDDDDDDEE
+            //     The advt data only id 122 0xD3040122BBCCDDDDDDDDDDDDEE
             //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQhBUk9ZR0JJVg==
 
             if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
@@ -193,65 +193,74 @@ namespace qcbadge.Controllers
 
                     //lets do some CRC things
                     String crcData = advertData.Substring(6, 20);
-                    System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData.ToString());
-                    ushort crcrsp = CCITT_CRC16(crcData);
-                    System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp.ToString());
+                    System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData);
+                    UInt16 crcrsp = CCITT_CRC16(crcData);
+                    System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp);
                     byte[] recbytes = new byte[2];
                     recbytes[0] = BitConverter.GetBytes(crcrsp)[0];
                     recbytes[1] = BitConverter.GetBytes(crcrsp)[1];
-                    System.Diagnostics.Debug.WriteLine("CRC 1st byte: " + recbytes[0].ToString());
-                    System.Diagnostics.Debug.WriteLine("CRC 2nd byte: " + recbytes[1].ToString());
+                    System.Diagnostics.Debug.WriteLine("CRC 1st byte: " + recbytes[0]);
+                    System.Diagnostics.Debug.WriteLine("CRC 2nd byte: " + recbytes[1]);
                     byte crc8res = (byte)(recbytes[0] ^ recbytes[1]);
-                    System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res.ToString());
+                    System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res);
+                    String crcFinal = advertData.Substring(26, 2);
 
-
-
-                    String qcData = advertData.Substring(6, 20);
-                    System.Diagnostics.Debug.WriteLine(qcData);
-
-                    String badgeIdStr = qcData.Substring(0, 4);
-                    System.Diagnostics.Debug.WriteLine(badgeIdStr);
-                    int badgeId = Convert.ToInt32(badgeIdStr, 16) + 1;
-                    System.Diagnostics.Debug.WriteLine(badgeId);
-
-                    String curIconStr = qcData.Substring(4, 2);
-                    System.Diagnostics.Debug.WriteLine(curIconStr);
-                    int curIcon = Convert.ToInt32(curIconStr, 16);
-                    System.Diagnostics.Debug.WriteLine(curIcon);
-
-                    //Need to convert the int to a bit array
-                    String curIconArrStr = qcData.Substring(6, 14);
-                    System.Diagnostics.Debug.WriteLine(curIconArrStr);
-                    long curIconArr = Convert.ToInt64(curIconArrStr, 16);
-                    System.Diagnostics.Debug.WriteLine(curIconArr);
-
-
-                    string binaryArr = Convert.ToString(curIconArr, 2); //Convert to binary in a string
-
-                    int[] bitSet = binaryArr.PadLeft(48, '0') // Add 0's from left
-                                 .Select(c => int.Parse(c.ToString())) // convert each char to int
-                                 .ToArray(); // Convert IEnumerable from select to Array
-
-                    //Bitset is inversed from spec. LSB==47
-                    for (int i = 0; i < 48; i++)
+                    if(crcFinal.Equals(crc8res))
                     {
-                        System.Diagnostics.Debug.WriteLine("i: " + i);
-                        System.Diagnostics.Debug.WriteLine(bitSet[i]);
-                    }
+                        String qcData = advertData.Substring(6, 22);
+                        System.Diagnostics.Debug.WriteLine(qcData);
+
+                        String badgeIdStr = qcData.Substring(0, 4);
+                        System.Diagnostics.Debug.WriteLine(badgeIdStr);
+                        int badgeId = Convert.ToInt32(badgeIdStr, 16) + 1;
+                        System.Diagnostics.Debug.WriteLine(badgeId);
+
+                        String curIconStr = qcData.Substring(4, 2);
+                        System.Diagnostics.Debug.WriteLine(curIconStr);
+                        int curIcon = Convert.ToInt32(curIconStr, 16);
+                        System.Diagnostics.Debug.WriteLine(curIcon);
+
+                        //Need to convert the int to a bit array
+                        String curIconArrStr = qcData.Substring(6, 14);
+                        System.Diagnostics.Debug.WriteLine(curIconArrStr);
+                        long curIconArr = Convert.ToInt64(curIconArrStr, 16);
+                        System.Diagnostics.Debug.WriteLine(curIconArr);
+
+
+                        string binaryArr = Convert.ToString(curIconArr, 2); //Convert to binary in a string
+
+                        int[] bitSet = binaryArr.PadLeft(48, '0') // Add 0's from left
+                                     .Select(c => int.Parse(c.ToString())) // convert each char to int
+                                     .ToArray(); // Convert IEnumerable from select to Array
+
+                        //Bitset is inversed from spec. LSB==47
+                        for (int i = 0; i < 48; i++)
+                        {
+                            System.Diagnostics.Debug.WriteLine("i: " + i);
+                            System.Diagnostics.Debug.WriteLine(bitSet[i]);
+                        }
 
 
 
-                    int rows = sql.updateBadge(badgeId, curIcon, bitSet);
-                    System.Diagnostics.Debug.WriteLine(rows);
+                        int rows = sql.updateBadge(badgeId, curIcon, bitSet);
+                        System.Diagnostics.Debug.WriteLine(rows);
 
-                    if(rows == 1)
-                    {
-                        return StatusCode(201);
+                        if (rows == 1)
+                        {
+                            return StatusCode(201);
+                        }
+                        else
+                        {
+                            return StatusCode(200);
+                        }
                     }
                     else
                     {
                         return StatusCode(200);
                     }
+
+
+                    
 
                     
 
@@ -266,29 +275,43 @@ namespace qcbadge.Controllers
 
         }
 
-        private ushort CCITT_CRC16(string strInput)
+        private UInt16 CCITT_CRC16(string strInput)
         {
-            ushort data;
-            ushort crc = 0xFFFF;
+
             byte[] bytes = StringToByteArray(strInput);
-            for (int j = 0; j < bytes.Length; j++)
+
+            UInt16 crc = 0xB8F6;
+            
+            //crc = (unsigned char)(crc >> 8) | (crc << 8);
+            //crc ^= (unsigned char) *sbuf;
+            //crc ^= (unsigned char)(crc & 0xff) >> 4;
+            //crc ^= (crc << 8) << 4;
+            //crc ^= ((crc & 0xff) << 4) << 1;
+            //len--;
+            //sbuf++;
+
+            for(int j = 0; j < 10; j++)
             {
-                crc = (ushort)(crc ^ bytes[j]);
-                for (int i = 0; i < 8; i++)
-                {
-                    if ((crc & 0x0001) == 1)
-                        crc = (ushort)((crc >> 1) ^ 0x8408);
-                    else
-                        crc >>= 1;
-                }
+                System.Diagnostics.Debug.WriteLine("sbuf: " + j);
+                System.Diagnostics.Debug.WriteLine("byte: " + bytes[j]);
+
+                crc = (UInt16)(((crc >> 8) | (crc << 8)) & 0xffff);
+                crc ^= (UInt16)(bytes[j] & 0xff);//byte to int, trunc sign
+                crc ^= (UInt16)((crc & 0xff) >> 4);
+                crc ^= (UInt16)((crc << 12) & 0xffff );
+                crc ^= (UInt16)(((crc & 0xff) << 5) & 0xffff);
             }
-            crc = (ushort)~crc;
-            data = crc;
-            crc = (ushort)((crc << 8) ^ (data >> 8 & 0xFF));
+            crc &= 0xffff;
             return crc;
+
         }
 
-        public static byte[] StringToByteArray(String hex)
+
+
+
+
+
+public static byte[] StringToByteArray(String hex)
         {
             int NumberChars = hex.Length;
             byte[] bytes = new byte[NumberChars / 2];
