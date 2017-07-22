@@ -154,6 +154,22 @@ namespace qcbadge.Controllers
             //     The advt data only id 122 0xD3040122BBCCDDDDDDDDDDDDEE
             //     http://localhost:55091/Home/Update?advertdata64=AgEEAxncGQ//0wQBIrvM3d3d3d3uCQhBUk9ZR0JJVg==
 
+
+
+             // 0xD3, // Company ID - Fixed (queercon)
+             // 0x04, // Company ID - Fixed (queercon)
+             // 0x00, // Badge ID MSB
+             // 0x00, // Badge ID LSB
+             // 0x00, // Current icon ID
+             // 0x00, // icon 40..47
+             // 0x00, // icon 32..39
+             // 0x00, // icon 24..31
+             // 0x00, // icon 16..23
+             // 0x00, // icon  8..15
+             // 0x00, // icon  0.. 7
+             // 0x00, // CHECK
+             // 0x00, // CHECK
+
             if (String.IsNullOrEmpty(advertData) && String.IsNullOrEmpty(advertData64))
             {
 
@@ -192,23 +208,27 @@ namespace qcbadge.Controllers
 
 
                     //lets do some CRC things
-                    String crcData = advertData.Substring(6, 20);
+                    String crcData = advertData.Substring(6, 18);
                     System.Diagnostics.Debug.WriteLine("CRC to check: " + crcData);
                     UInt16 crcrsp = CCITT_CRC16(crcData);
                     System.Diagnostics.Debug.WriteLine("CRC resp: " + crcrsp);
-                    byte[] recbytes = new byte[2];
-                    recbytes[0] = BitConverter.GetBytes(crcrsp)[0];
-                    recbytes[1] = BitConverter.GetBytes(crcrsp)[1];
-                    System.Diagnostics.Debug.WriteLine("CRC 1st byte: " + recbytes[0]);
-                    System.Diagnostics.Debug.WriteLine("CRC 2nd byte: " + recbytes[1]);
-                    byte crc8res = (byte)(recbytes[0] ^ recbytes[1]);
-                    System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res);
-                    String crcFinal = advertData.Substring(26, 2);
+                    //byte[] recbytes = new byte[2];
+                    //recbytes[0] = BitConverter.GetBytes(crcrsp)[0];
+                    //recbytes[1] = BitConverter.GetBytes(crcrsp)[1];
+                    //System.Diagnostics.Debug.WriteLine("CRC 1st byte: " + recbytes[0]);
+                    //System.Diagnostics.Debug.WriteLine("CRC 2nd byte: " + recbytes[1]);
+
+                    //byte crc8res = (byte)(recbytes[0] ^ recbytes[1]);
+                    //System.Diagnostics.Debug.WriteLine("CRC the byte: " + crc8res);
+
+                    String crcFinal = advertData.Substring(24, 4);
                     int crcFinalInt = Convert.ToInt32(crcFinal, 16);
 
-                    if (crcFinalInt == crc8res)
+                    System.Diagnostics.Debug.WriteLine("CRC the bytes: " + crcFinalInt);
+
+                    if (crcFinalInt == crcrsp)
                     {
-                        String qcData = advertData.Substring(6, 22);
+                        String qcData = advertData.Substring(6, 18);
                         System.Diagnostics.Debug.WriteLine(qcData);
 
                         String badgeIdStr = qcData.Substring(0, 4);
@@ -222,7 +242,7 @@ namespace qcbadge.Controllers
                         System.Diagnostics.Debug.WriteLine(curIcon);
 
                         //Need to convert the int to a bit array
-                        String curIconArrStr = qcData.Substring(6, 14);
+                        String curIconArrStr = qcData.Substring(6, 12);
                         System.Diagnostics.Debug.WriteLine(curIconArrStr);
                         long curIconArr = Convert.ToInt64(curIconArrStr, 16);
                         System.Diagnostics.Debug.WriteLine(curIconArr);
@@ -291,7 +311,7 @@ namespace qcbadge.Controllers
             //len--;
             //sbuf++;
 
-            for(int j = 0; j < 10; j++)
+            for(int j = 0; j < 9; j++)
             {
                 System.Diagnostics.Debug.WriteLine("sbuf: " + j);
                 System.Diagnostics.Debug.WriteLine("byte: " + bytes[j]);
