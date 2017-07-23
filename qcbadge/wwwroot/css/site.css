@@ -19,6 +19,8 @@ disclaim {
 
 body {
     font-size: 36pt;
+    background-color: black;
+    font-color: white;
 }
 
 .square {
