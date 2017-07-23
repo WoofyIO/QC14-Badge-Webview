@@ -182,6 +182,8 @@ namespace qcbadge.Controllers
 
                 if (!String.IsNullOrEmpty(advertData64))
                 {
+                    //System.Diagnostics.Debug.WriteLine(advertData64);
+                    advertData64 = advertData64.Replace(' ', '+');
                     byte[] bytes = Convert.FromBase64String(advertData64);
                     advertData = "0x" + BitConverter.ToString(bytes);
 
