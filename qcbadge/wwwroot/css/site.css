@@ -1,4 +1,5 @@
-﻿/*mainold {
+
+/*mainold {
     background-color: white;
     width: 600px;
     border: 5px solid black;
@@ -18,27 +19,62 @@ disclaim {
 
 
 body {
-    font-size: 32pt;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
     background-color: black;
     color: white;
+}
+
+iframe {
+    margin: 0;
+    padding: 0;
+    border: 0px;
 }
 
 .square {
     float: left;
     position: relative;
-    width: 4.545%;
-    padding-bottom: 4.545%; /* = width for a 1:1 aspect ratio */
+    width: 4.7619%; /* 21 segments */
+    padding-bottom: 4.7619%; /* = width for a 1:1 aspect ratio */
     margin: 0%;
     overflow: hidden;
 }
 
 .content {
     position: absolute;
-    height: 100%; /* = 100% - 2*10% padding */
-    width: 100%; /* = 100% - 2*5% padding */
+    height: 100%;
+    width: 100%;
     padding: 0% 0%;
+    text-align: center;
 }
 
-img {
+img.icon {
+    width: 80%;
+}
+
+img.arrow {
+    width: 80%;
+}
+
+.list-column {
+    float: left;
+    width: 40%;
+}
+
+.list-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.list-timestamp {
+    float: left;
     width: 100%;
+}
+
+img.list-icon {
+    text-align: center;
+    vertical-align: middle;
+    width: 36px;
+    padding-right: 15px;
 }
