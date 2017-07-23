@@ -29,7 +29,6 @@ body {
     width: 4.545%;
     padding-bottom: 4.545%; /* = width for a 1:1 aspect ratio */
     margin: 0%;
-    background-color: #ffffff;
     overflow: hidden;
 }
 
