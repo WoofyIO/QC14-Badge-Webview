@@ -173,18 +173,11 @@
 
 @if (indv)
 {
-
-    <table>
-        <tr>
-            <td>Your Current Icon</td>
-            <td><img class="icon" src="@imgname[curr]" /></td>
-        </tr>
-    </table>
-
+    <div class="list-timestamp">Your Current Icon: <img class="icon" src="@imgname[curr]"</div>
 }
-        <div>Last Updated: @ViewData["lastseen"] GMT</div>
 
-        <div>@ViewData["Message"]</div>
+<div class="list-timestamp">Last Updated: @ViewData["lastseen"] GMT</div>
+<div>@ViewData["Message"]</div>
 
 
 
