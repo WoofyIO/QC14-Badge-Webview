@@ -159,6 +159,10 @@
 
 
 }
+@if (indv)
+{
+    <div class="list-timestamp"><br/>Your Current Icon: <img class="list-icon" src="@imgname[curr]" /><br/></div>
+}
 
 <div class="list-column">
     @for (int i = 0; i < 22; i++)
@@ -180,11 +184,6 @@
         </div>
     }
 </div>
-
-@if (indv)
-{
-    <div class="list-timestamp"><br/>Your Current Icon: <img class="list-icon" src="@imgname[curr]" /><br/></div>
-}
 
 <div class="list-timestamp"><br/>Last Updated: @ViewData["lastseen"] GMT<br/></div>
 <div>@ViewData["Message"]</div>
