@@ -70,6 +70,7 @@
     imgname[47] = "/images/48-eb4ce412-61c2-11e7-a915-d794e6b54cea.png";
 
 
+    imgname[98] = "/images/clear2.png";
     imgname[99] = "/images/clear.png";
 
     string[] imgdesc = new string[100];
@@ -124,6 +125,7 @@
     imgdesc[47] = "/images/48-eb4ce412-61c2-11e7-a915-d794e6b54cea.png";
 
 
+    imgdesc[98] = " ";
     imgdesc[99] = " ";
 
     string[] img = new string[48];
@@ -141,8 +143,16 @@
         }
         else
         {
-            img[i] = imgname[99];
-            desc[i] = imgdesc[99];
+            if (i == 4)
+            {
+                img[i] = imgname[98];
+                desc[i] = imgdesc[98];
+            }
+            else
+            {
+                img[i] = imgname[99];
+                desc[i] = imgdesc[99];
+            }
         }
 
     }
